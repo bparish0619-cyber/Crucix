@@ -1,0 +1,101 @@
+name: Build & Release Android APK
+
+on:
+  push:
+    tags:
+      - 'android-v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version (e.g. 1.0.0)'
+        required: true
+        default: '1.0.0'
+
+jobs:
+  build:
+    name: Build APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android SDK components
+        run: |
+          sdkmanager "platform-tools" "platforms;android-34" "build-tools;34.0.0"
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x android/gradlew
+
+      - name: Build debug APK
+        run: |
+          cd android
+          ./gradlew assembleDebug --stacktrace
+
+      - name: Set version and rename APK
+        id: vars
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            VERSION="${{ github.event.inputs.version }}"
+            TAG="android-v${VERSION}"
+          else
+            TAG="${{ github.ref_name }}"
+            VERSION="${TAG#android-v}"
+          fi
+          SRC="android/app/build/outputs/apk/debug/app-debug.apk"
+          DEST="android/app/build/outputs/apk/debug/Crucix-Android-${VERSION}.apk"
+          cp "$SRC" "$DEST"
+          echo "tag=${TAG}" >> $GITHUB_OUTPUT
+          echo "version=${VERSION}" >> $GITHUB_OUTPUT
+          echo "apk_path=${DEST}" >> $GITHUB_OUTPUT
+          echo "apk_name=Crucix-Android-${VERSION}.apk" >> $GITHUB_OUTPUT
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.vars.outputs.tag }}
+          name: "Crucix Android v${{ steps.vars.outputs.version }}"
+          body: |
+            ## Crucix Android v${{ steps.vars.outputs.version }}
+
+            Mobile companion app for the Crucix OSINT intelligence dashboard.
+
+            ---
+
+            ### Install
+            1. Download **${{ steps.vars.outputs.apk_name }}** below
+            2. On your Android device: **Settings → Security → Install Unknown Apps** → enable for your browser or file manager
+            3. Open the downloaded APK → tap **Install**
+
+            > This is a debug-signed build. If Android warns "Install blocked", tap **More details → Install anyway**.
+
+            **Requires:** Android 8.0+ (API 26)
+
+            ---
+
+            ### Features
+            - **Dashboard** — Full WebView client for your Crucix server with live SSE auto-refresh and pull-to-refresh
+            - **Settings** — AES-256-GCM encrypted storage for all 20 API keys, organized by category with direct registration links
+            - **Help** — Step-by-step setup guide, key priority tiers, and 12-item expandable FAQ
+
+            ### First-time Setup
+            1. Start Crucix on your machine: `node server.mjs`
+            2. Open the app → **Settings** → set Server URL to `http://<YOUR_LAN_IP>:3117`
+            3. Enter API keys (FRED + FIRMS + EIA are the top 3 — free, 60 sec each to register)
+            4. Tap **COPY .ENV** → paste into your server's `.env` → restart server
+            5. Return to **Dashboard** and pull to refresh
+          files: ${{ steps.vars.outputs.apk_path }}
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
