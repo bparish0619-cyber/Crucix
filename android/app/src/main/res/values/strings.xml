@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Crucix</string>
+    <string name="nav_dashboard">Dashboard</string>
+    <string name="nav_settings">Settings</string>
+    <string name="nav_help">Help</string>
+    <string name="settings_title">Configuration</string>
+    <string name="settings_saved">Configuration saved</string>
+    <string name="env_copied">.env content copied to clipboard</string>
+    <string name="clear_confirm_title">Clear All Keys?</string>
+    <string name="clear_confirm_message">This will permanently delete all stored API keys and configuration.</string>
+    <string name="connection_failed">Cannot connect to Crucix server</string>
+    <string name="no_server_configured">No server URL configured. Go to Settings.</string>
+</resources>

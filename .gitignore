@@ -45,3 +45,11 @@ npm-debug.log*
 
 # Local maintainer notes
 MAINTAINER_DECISIONS.local.md
+
+# Android build artifacts
+android/.gradle/
+android/app/build/
+android/build/
+android/local.properties
+*.apk
+!android/gradle/wrapper/gradle-wrapper.jar

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Background tiers -->
+    <color name="background_dark">#050d14</color>
+    <color name="surface_dark">#0d1a24</color>
+    <color name="surface_elevated">#132030</color>
+    <color name="surface_input">#0a1520</color>
+    <color name="surface_border">#1e3045</color>
+
+    <!-- Crucix accent colors -->
+    <color name="crucix_cyan">#00e5ff</color>
+    <color name="crucix_cyan_dark">#00b4d8</color>
+    <color name="crucix_cyan_10">#1a00e5ff</color>
+    <color name="crucix_teal">#00bfa5</color>
+
+    <!-- Text hierarchy -->
+    <color name="text_primary">#e8f4f8</color>
+    <color name="text_secondary">#8fa8b8</color>
+    <color name="text_muted">#4a6275</color>
+
+    <!-- Status colors -->
+    <color name="status_red">#ff3d3d</color>
+    <color name="status_amber">#ffb300</color>
+    <color name="status_green">#00c853</color>
+
+    <!-- Material primary colors mapped -->
+    <color name="colorPrimary">#00e5ff</color>
+    <color name="colorPrimaryVariant">#00b4d8</color>
+    <color name="colorOnPrimary">#050d14</color>
+    <color name="colorSecondary">#00bfa5</color>
+    <color name="colorOnSecondary">#050d14</color>
+    <color name="colorSurface">#0d1a24</color>
+    <color name="colorOnSurface">#e8f4f8</color>
+    <color name="colorBackground">#050d14</color>
+    <color name="colorOnBackground">#e8f4f8</color>
+    <color name="colorError">#ff3d3d</color>
+    <color name="colorOnError">#050d14</color>
+</resources>

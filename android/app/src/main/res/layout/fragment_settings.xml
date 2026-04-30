@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_dark">
+
+    <!-- Header -->
+    <LinearLayout
+        android:id="@+id/settings_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/surface_dark"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="12dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CONFIGURATION"
+            android:textColor="@color/text_primary"
+            android:textSize="18sp"
+            android:fontFamily="monospace"
+            android:letterSpacing="0.12" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="8dp">
+
+            <ProgressBar
+                android:id="@+id/progress_keys"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="4dp"
+                android:layout_weight="1"
+                android:progressTint="@color/crucix_cyan"
+                android:progressBackgroundTint="@color/surface_border"
+                android:max="100"
+                android:progress="0" />
+
+            <TextView
+                android:id="@+id/tv_key_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 / 10 keys configured"
+                android:textColor="@color/text_muted"
+                android:textSize="11sp"
+                android:fontFamily="monospace"
+                android:layout_marginStart="12dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Scrollable settings content -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="88dp"
+        android:paddingBottom="96dp"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:id="@+id/settings_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="8dp" />
+
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Bottom action bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_gravity="bottom"
+        android:background="@color/surface_dark"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="12dp">
+
+        <Button
+            android:id="@+id/btn_clear_all"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CLEAR"
+            android:textColor="@color/status_red"
+            android:textSize="12sp"
+            android:minWidth="0dp" />
+
+        <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btn_copy_env"
+            style="@style/CrucixButtonOutlined"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="COPY .ENV"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/btn_save"
+            style="@style/CrucixButtonFilled"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SAVE" />
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

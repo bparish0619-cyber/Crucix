@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_dark">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="32dp">
+
+        <!-- Header -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CRUCIX SETUP GUIDE"
+            android:textColor="@color/text_primary"
+            android:textSize="18sp"
+            android:fontFamily="monospace"
+            android:letterSpacing="0.12"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="26 sources. One command. Zero cloud."
+            android:textColor="@color/crucix_cyan"
+            android:textSize="12sp"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Quick Start Steps -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardBackgroundColor="@color/surface_dark"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="QUICK START"
+                    android:textColor="@color/crucix_cyan"
+                    android:textSize="11sp"
+                    android:fontFamily="monospace"
+                    android:letterSpacing="0.15"
+                    android:layout_marginBottom="12dp" />
+
+                <include layout="@layout/item_setup_step"
+                    android:id="@+id/step1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Setup steps card - built programmatically via the card above -->
+        <!-- Steps are inserted via the static layout included above -->
+
+        <!-- Steps: hardcoded for simplicity -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardBackgroundColor="@color/surface_dark"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SETUP STEPS"
+                    android:textColor="@color/crucix_cyan"
+                    android:textSize="11sp"
+                    android:fontFamily="monospace"
+                    android:letterSpacing="0.15"
+                    android:layout_marginBottom="12dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp"
+                    android:lineSpacingMultiplier="1.6"
+                    android:text="① Install Node.js 22+ on your computer\n\n② Clone your Crucix fork:\ngit clone https://github.com/bparish0619-cyber/Crucix\n\n③ Install dependencies:\ncd Crucix &amp;&amp; npm install\n\n④ Copy environment template:\ncp .env.example .env\n\n⑤ Add your API keys:\nOpen Settings in this app → configure keys → tap COPY .ENV → paste into your .env file\n\n⑥ Start the server:\nnode server.mjs\n\n⑦ Enter your server URL in Settings:\nhttp://&lt;YOUR_IP&gt;:3117\n\n⑧ Return to Dashboard and pull to refresh" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Key priority guide -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardBackgroundColor="@color/surface_dark"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="KEY PRIORITY"
+                    android:textColor="@color/crucix_cyan"
+                    android:textSize="11sp"
+                    android:fontFamily="monospace"
+                    android:letterSpacing="0.15"
+                    android:layout_marginBottom="12dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp"
+                    android:lineSpacingMultiplier="1.6"
+                    android:text="TIER 1 — Get these first (free, &lt;60 sec each):\n• FRED API Key → Economic indicators (VIX, CPI, yield curve)\n• NASA FIRMS Key → Satellite fire/thermal detection\n• EIA API Key → Energy prices (WTI, Brent, nat gas)\n\nTIER 2 — Enhanced coverage (free):\n• ACLED → Armed conflict events\n• AISstream → Maritime vessel tracking\n\nTIER 3 — Optional extensions:\n• ADS-B Exchange → Military flight tracking (~\$10/mo)\n• LLM Key → AI-enhanced alerts and trade ideas\n• Telegram/Discord → Push alert delivery\n\nCrucix works without ANY keys — 18+ sources are unauthenticated." />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Quick links -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardBackgroundColor="@color/surface_dark"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="QUICK LINKS"
+                    android:textColor="@color/crucix_cyan"
+                    android:textSize="11sp"
+                    android:fontFamily="monospace"
+                    android:letterSpacing="0.15"
+                    android:layout_marginBottom="12dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginBottom="8dp">
+
+                    <Button
+                        android:id="@+id/btn_open_repo"
+                        style="@style/CrucixButtonOutlined"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Your Fork"
+                        android:layout_marginEnd="8dp" />
+
+                    <Button
+                        android:id="@+id/btn_open_upstream"
+                        style="@style/CrucixButtonOutlined"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Upstream Repo"
+                        android:layout_marginStart="8dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <Button
+                        android:id="@+id/btn_open_node_js"
+                        style="@style/CrucixButtonOutlined"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Node.js 22+"
+                        android:layout_marginEnd="8dp" />
+
+                    <Button
+                        android:id="@+id/btn_railway_deploy"
+                        style="@style/CrucixButtonOutlined"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Deploy to Railway"
+                        android:layout_marginStart="8dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- FAQ Header -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FREQUENTLY ASKED QUESTIONS"
+            android:textColor="@color/text_primary"
+            android:textSize="14sp"
+            android:fontFamily="monospace"
+            android:letterSpacing="0.1"
+            android:layout_marginBottom="12dp" />
+
+        <!-- FAQ items injected here -->
+        <LinearLayout
+            android:id="@+id/faq_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

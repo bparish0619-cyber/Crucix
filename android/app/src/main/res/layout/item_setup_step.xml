@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingVertical="4dp">
+
+    <TextView
+        android:id="@+id/tv_step_number"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:textColor="@color/crucix_cyan"
+        android:textSize="12sp"
+        android:fontFamily="monospace"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/tv_step_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="@color/text_secondary"
+        android:textSize="13sp"
+        android:lineSpacingMultiplier="1.4"
+        android:layout_marginStart="8dp" />
+
+</LinearLayout>

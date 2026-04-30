@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_dark">
+
+    <!-- Top toolbar -->
+    <LinearLayout
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:background="@color/surface_dark"
+        android:orientation="horizontal"
+        android:paddingHorizontal="12dp"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/ic_signal"
+            app:tint="@color/crucix_cyan"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:id="@+id/tv_server_url"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"
+            android:fontFamily="monospace"
+            android:text="Not configured"
+            android:ellipsize="end"
+            android:maxLines="1" />
+
+        <Button
+            android:id="@+id/btn_open_api"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:text="API"
+            android:textSize="11sp"
+            android:textColor="@color/text_muted"
+            android:minWidth="0dp"
+            android:paddingHorizontal="8dp" />
+
+    </LinearLayout>
+
+    <!-- Progress bar -->
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:progressTint="@color/crucix_cyan"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- SwipeRefresh + WebView -->
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/progress_bar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <WebView
+            android:id="@+id/web_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <!-- Loading indicator overlay -->
+    <LinearLayout
+        android:id="@+id/loading_indicator"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/background_dark"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ProgressBar
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:indeterminateTint="@color/crucix_cyan" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CONNECTING TO CRUCIX"
+            android:textColor="@color/crucix_cyan"
+            android:textSize="11sp"
+            android:fontFamily="monospace"
+            android:letterSpacing="0.15"
+            android:layout_marginTop="16dp" />
+
+    </LinearLayout>
+
+    <!-- Error state -->
+    <LinearLayout
+        android:id="@+id/error_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/background_dark"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="32dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="⚠"
+            android:textSize="40sp"
+            android:textColor="@color/status_amber" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CONNECTION FAILED"
+            android:textColor="@color/text_primary"
+            android:textSize="14sp"
+            android:fontFamily="monospace"
+            android:letterSpacing="0.1"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:id="@+id/tv_error_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cannot connect to Crucix server.\nVerify the server is running and the URL in Settings is correct."
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp"
+            android:gravity="center"
+            android:layout_marginTop="12dp"
+            android:lineSpacingMultiplier="1.4" />
+
+        <Button
+            android:id="@+id/btn_retry"
+            style="@style/CrucixButtonOutlined"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RETRY"
+            android:layout_marginTop="24dp" />
+
+        <Button
+            android:id="@+id/btn_open_settings"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Open Settings"
+            android:textColor="@color/text_muted"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+
+    <!-- FAB open in browser -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_open_browser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/ic_open_browser"
+        android:contentDescription="Open in browser"
+        app:backgroundTint="@color/surface_elevated"
+        app:tint="@color/crucix_cyan"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

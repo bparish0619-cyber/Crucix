@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.CrucixAndroid" parent="Theme.Material3.Dark">
+        <item name="colorPrimary">@color/crucix_cyan</item>
+        <item name="colorOnPrimary">@color/background_dark</item>
+        <item name="colorPrimaryContainer">@color/surface_elevated</item>
+        <item name="colorOnPrimaryContainer">@color/crucix_cyan</item>
+        <item name="colorSecondary">@color/crucix_teal</item>
+        <item name="colorOnSecondary">@color/background_dark</item>
+        <item name="colorSurface">@color/surface_dark</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        <item name="colorBackground">@color/background_dark</item>
+        <item name="colorOnBackground">@color/text_primary</item>
+        <item name="colorError">@color/status_red</item>
+        <item name="colorOnError">@color/background_dark</item>
+        <item name="android:colorBackground">@color/background_dark</item>
+        <item name="android:statusBarColor">@color/surface_dark</item>
+        <item name="android:navigationBarColor">@color/surface_dark</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!-- Alert Dialog -->
+    <style name="CrucixAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="colorSurface">@color/surface_elevated</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        <item name="colorPrimary">@color/crucix_cyan</item>
+        <item name="android:background">@color/surface_elevated</item>
+    </style>
+
+    <!-- Filled button -->
+    <style name="CrucixButtonFilled" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/crucix_cyan</item>
+        <item name="android:textColor">@color/background_dark</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:letterSpacing">0.08</item>
+    </style>
+
+    <!-- Outlined button -->
+    <style name="CrucixButtonOutlined" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="strokeColor">@color/crucix_cyan_dark</item>
+        <item name="android:textColor">@color/crucix_cyan</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="rippleColor">@color/crucix_cyan_10</item>
+    </style>
+
+</resources>
