@@ -13,11 +13,12 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.crucix.android.R
 import com.crucix.android.data.PreferencesManager
 import com.crucix.android.databinding.FragmentDashboardBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 
 class DashboardFragment : Fragment() {
@@ -60,7 +61,9 @@ class DashboardFragment : Fragment() {
             }
 
             webViewClient = object : WebViewClient() {
-                override fun onPageStarted(view: WebView?, url: String?, favicon: android.graphics.Bitmap?) {
+                override fun onPageStarted(
+                    view: WebView?, url: String?, favicon: android.graphics.Bitmap?
+                ) {
                     binding.loadingIndicator.visibility = View.VISIBLE
                     binding.errorLayout.visibility = View.GONE
                 }
@@ -87,7 +90,6 @@ class DashboardFragment : Fragment() {
                     request: WebResourceRequest?
                 ): Boolean {
                     val url = request?.url?.toString() ?: return false
-                    // Keep internal Crucix navigation in WebView; open external links in browser
                     return if (url.startsWith(serverUrl)) {
                         false
                     } else {
@@ -100,7 +102,8 @@ class DashboardFragment : Fragment() {
             webChromeClient = object : WebChromeClient() {
                 override fun onProgressChanged(view: WebView?, newProgress: Int) {
                     binding.progressBar.progress = newProgress
-                    binding.progressBar.visibility = if (newProgress < 100) View.VISIBLE else View.GONE
+                    binding.progressBar.visibility =
+                        if (newProgress < 100) View.VISIBLE else View.GONE
                 }
             }
         }
@@ -109,29 +112,29 @@ class DashboardFragment : Fragment() {
     private fun setupUI() {
         binding.swipeRefresh.apply {
             setColorSchemeResources(R.color.crucix_cyan, R.color.crucix_teal)
-            setBackgroundColor(resources.getColor(R.color.background_dark, null))
+            setBackgroundColor(
+                ContextCompat.getColor(requireContext(), R.color.background_dark)
+            )
             setOnRefreshListener { loadDashboard() }
         }
 
         binding.btnRetry.setOnClickListener { loadDashboard() }
 
+        // Navigate to Settings tab using the activity's BottomNavigationView directly
         binding.btnOpenSettings.setOnClickListener {
-            (activity as? com.crucix.android.MainActivity)?.let {
-                it.binding.bottomNavigation.selectedItemId = R.id.nav_settings
-            }
+            activity?.findViewById<BottomNavigationView>(R.id.bottom_navigation)
+                ?.selectedItemId = R.id.nav_settings
         }
 
         binding.fabOpenBrowser.setOnClickListener {
             if (serverUrl.isNotBlank()) {
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(serverUrl))
-                startActivity(intent)
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(serverUrl)))
             }
         }
 
         binding.btnOpenApi.setOnClickListener {
             if (serverUrl.isNotBlank()) {
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("$serverUrl/api/health"))
-                startActivity(intent)
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("$serverUrl/api/health")))
             }
         }
     }
@@ -150,7 +153,9 @@ class DashboardFragment : Fragment() {
         binding.webView.loadUrl(serverUrl)
     }
 
-    private fun showErrorState(message: String = "Cannot connect to Crucix server.\nVerify the server is running and the URL in Settings is correct.") {
+    private fun showErrorState(
+        message: String = "Cannot connect to Crucix server.\nVerify the server is running and the URL in Settings is correct."
+    ) {
         binding.webView.visibility = View.GONE
         binding.errorLayout.visibility = View.VISIBLE
         binding.tvErrorMessage.text = message
@@ -158,7 +163,6 @@ class DashboardFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        // Reload if server URL changed in settings
         val currentUrl = prefsManager.getServerUrl()
         if (currentUrl != serverUrl) {
             loadDashboard()

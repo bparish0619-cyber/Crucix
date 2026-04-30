@@ -7,7 +7,7 @@
     android:paddingVertical="6dp">
 
     <TextView
-        android:id="@+id/tv_field_label"
+        android:id="@+id/tvFieldLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/text_secondary"
@@ -16,14 +16,14 @@
         android:layout_marginStart="4dp" />
 
     <Spinner
-        android:id="@+id/spinner_value"
+        android:id="@+id/spinnerValue"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="@drawable/bg_spinner"
         android:paddingHorizontal="12dp" />
 
     <TextView
-        android:id="@+id/tv_field_description"
+        android:id="@+id/tvFieldDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/text_muted"
