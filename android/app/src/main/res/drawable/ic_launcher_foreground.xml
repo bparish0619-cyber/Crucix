@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+  <!-- Dark background -->
+  <path
+      android:fillColor="#050d14"
+      android:pathData="M0,0 H108 V108 H0 Z"/>
+
+  <!-- Outer signal arc -->
+  <path
+      android:strokeColor="#00e5ff"
+      android:strokeWidth="4"
+      android:fillColor="#00000000"
+      android:pathData="M24,54 A30,30 0 0 1 54,24 A30,30 0 0 1 84,54"/>
+
+  <!-- Middle signal arc -->
+  <path
+      android:strokeColor="#00e5ff"
+      android:strokeWidth="4"
+      android:fillColor="#00000000"
+      android:pathData="M34,54 A20,20 0 0 1 54,34 A20,20 0 0 1 74,54"/>
+
+  <!-- Inner signal arc -->
+  <path
+      android:strokeColor="#00e5ff"
+      android:strokeWidth="4"
+      android:fillColor="#00000000"
+      android:pathData="M44,54 A10,10 0 0 1 54,44 A10,10 0 0 1 64,54"/>
+
+  <!-- Center dot -->
+  <path
+      android:fillColor="#00e5ff"
+      android:pathData="M54,54 m-5,0 a5,5 0 1,0 10,0 a5,5 0 1,0 -10,0"/>
+
+  <!-- Bottom line -->
+  <path
+      android:strokeColor="#00b4d8"
+      android:strokeWidth="3"
+      android:pathData="M54,59 L54,80"/>
+
+  <!-- Horizontal base -->
+  <path
+      android:strokeColor="#00b4d8"
+      android:strokeWidth="3"
+      android:pathData="M40,80 L68,80"/>
+
+</vector>
